@@ -1,0 +1,36 @@
+
+server:
+  port: 8888      # \u7ED1\u5B9A\u5E94\u7528\u670D\u52A1\u7AEF\u53E3
+
+spring:
+  application:
+    name: mall-gateway-zuul     # \u6307\u5B9A\u5E94\u7528\u540D,\u4E5F\u5C31\u662F\u6CE8\u518C\u4E2D\u5FC3\u663E\u793A\u7684\u540D\u79F0
+
+# \u914D\u7F6Ezuul\u7F51\u5173
+zuul:
+  # \u8DEF\u7531
+  routes:
+    # \u670D\u52A1
+    mall-sso:
+      path: /mall-sso/**    # \u914D\u7F6E\u6620\u5C04\u8DEF\u5F84\uFF0C\u51E1\u662F/mall-sso \u5F00\u5934\u7684\u8BF7\u6C42\u8DEF\u5F84\uFF0C\u90FD\u4F1A\u8F6C\u53D1\u5230mall-sso\u670D\u52A1\u96C6\u7FA4\u4E2D
+      serviceId: mall-sso   # \u5E94\u7528\u540D
+    mall-user:
+      path: /mall-user/**
+      serviceId: mall-user
+
+eureka:
+  instance:
+    ip-address: 127.0.0.1     # \u7ED1\u5B9Aip\u5730\u5740
+#    prefer-ip-address: true    # \u5C06\u81EA\u5DF1\u7684ip\u5730\u5740\u6CE8\u518C\u5230Eureka\u4E2D\u5FC3
+#    lease-expiration-duration-in-seconds: 10    # \u6301\u7EED\u66F4\u65B0\u65F6\u95F4\u95F4\u9694\uFF0C10s
+#    lease-renewal-interval-in-seconds: 10       # \u5FC3\u8DF3\u65F6\u95F4\u95F4\u9694\uFF0C\u5C31\u662F\u91CD\u65B0\u5230\u6CE8\u518C\u4E2D\u5FC3\u6CE8\u518C\u7684\u65F6\u95F4\u95F4\u9694
+  client:
+    register-with-eureka: true     # \u662F\u5426\u5C06\u81EA\u8EAB\u6CE8\u518C\u5230Eureka\u4E2D
+    fetch-registry: true            # \u662F\u5426\u9700\u8981\u4ECEEureka\u4E2D\u83B7\u53D6\u6CE8\u518C\u7684\u4FE1\u606F
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka/,http://127.0.0.1:10087/eureka/,http://127.0.0.1:10088/eureka/  # Eureka\u4EA4\u4E92\u5730\u5740\uFF0C\u6CE8\u518C\u4E2D\u5FC3\u7684\u5730\u5740
+    eureka-connection-idle-timeout-seconds: 30  # \u4E0E\u6CE8\u518C\u4E2D\u5FC3\u8FDE\u63A5\u8D85\u65F6\u7684\u65F6\u957F
+    eureka-server-read-timeout-seconds: 8       # \u5728\u6CE8\u518C\u4E2D\u5FC3\u8BFB\u8D85\u65F6\u65F6\u957F
+
+
+
