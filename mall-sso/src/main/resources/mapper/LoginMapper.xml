@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xc.mall.mapper.LoginMapper">
+  <resultMap id="BaseResultMap" type="com.xc.mall.pojo.Login">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="psw" jdbcType="VARCHAR" property="psw" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, psw
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_mall_login
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_mall_login
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xc.mall.pojo.Login">
+    insert into t_mall_login (id, psw)
+    values (#{id,jdbcType=VARCHAR}, #{psw,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xc.mall.pojo.Login">
+    insert into t_mall_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="psw != null">
+        psw,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="psw != null">
+        #{psw,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xc.mall.pojo.Login">
+    update t_mall_login
+    <set>
+      <if test="psw != null">
+        psw = #{psw,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xc.mall.pojo.Login">
+    update t_mall_login
+    set psw = #{psw,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
