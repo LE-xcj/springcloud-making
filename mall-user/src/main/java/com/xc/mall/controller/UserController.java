@@ -6,6 +6,7 @@ import com.xc.mall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +40,19 @@ public class UserController {
         return vo;
     }
 
+    @RequestMapping("/queryUser2")
+    public UserVO queryUser2(@RequestParam("id") String id, HttpServletRequest request) throws Exception {
+
+        User user = userService.queryUserById(id);
+
+        UserVO vo = new UserVO();
+        vo.setUser(user);
+        vo.setMessage(getSystemInfo(request));
+
+        return vo;
+
+    }
+
 
     private String getSystemInfo(HttpServletRequest request) throws UnknownHostException {
 
@@ -51,7 +65,7 @@ public class UserController {
                 .append(":")
                 .append(serverPort)
                 .append(" 机器为你服务")
-                .append("\n");
+                .append("");
 
         return message.toString();
 
