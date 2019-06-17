@@ -1,0 +1,14 @@
+
+server:
+  port: 10060
+  servlet:
+    context-path: /zipkin
+spring:
+  application:
+    name: zipkin-server
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
