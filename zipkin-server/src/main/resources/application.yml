@@ -6,6 +6,10 @@ server:
 spring:
   application:
     name: zipkin-server
+  zipkin:
+    base-url: http://127.0.0.1:10060/zipkin
+  main:
+    allow-bean-definition-overriding: true
 
 management:
   metrics:

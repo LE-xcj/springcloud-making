@@ -1,10 +1,16 @@
+apollo:
+  bootstrap:
+    enabled: true   #开启Apollo
+  cacheDir: D:\\Apollo\\opt\\data   #自定义配置文件的缓存目录
+  namespaces: application
+  ## meta: http://127.0.0.1:8070
 
 server:
-  port: 10001
+  port: ${app.port}   # 使用placeholder来进行数值注入
 spring:
   application:
-    name: mall-order
+    name: ${app.name}
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:10086/eureka/,http://127.0.0.1:10087/eureka/,http://127.0.0.1:10088/eureka/
+      defaultZone: ${app.defaultZone}
