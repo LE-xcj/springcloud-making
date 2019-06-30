@@ -10,6 +10,18 @@ server:
 spring:
   application:
     name: ${app.name}
+  sleuth:
+    sampler:
+      probability: ${sleuth.sampler.probability}    # 采集量：0~100%(1为100%)
+    web:
+      client:
+        enabled: true
+  zipkin:
+    base-url: ${zipkin.base.url}    # zipkin服务器的注册地址
+    sender:
+      type: web   # 有kafka web rabbit mq三种选择,注意这里不用Apollo配置，因为会被先解析成默认rabbit方式
+    enabled: true     # 开启zipkin客户端连接
+
 eureka:
   client:
     service-url:

@@ -1,5 +1,6 @@
 package com.xc.mall.config;
 
+import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableEurekaClient
 @Configuration
+@EnableApolloConfig(value = "bigdata.mall-service-common")
 @ComponentScan(basePackages = "com.xc.mall")
 public class MallUserApplicationConfig {
 

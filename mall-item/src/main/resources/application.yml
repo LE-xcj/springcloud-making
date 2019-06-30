@@ -1,11 +1,27 @@
+apollo:
+  bootstrap:
+    enabled: true   #开启Apollo
+  cacheDir: D:\\Apollo\\opt\\data   #自定义配置文件的缓存目录
 
 server:
   port: 10002
 spring:
   application:
     name: mall-item
+  sleuth:
+    sampler:
+      probability: ${sleuth.sampler.probability}
+    web:
+      client:
+        enabled: true
+  zipkin:
+    base-url: ${zipkin.base.url}
+    sender:
+      type: web   # 有kafka web rabbit mq三种选择
+    enabled: true
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka/,http://127.0.0.1:10087/eureka/,http://127.0.0.1:10088/eureka/
+
 
