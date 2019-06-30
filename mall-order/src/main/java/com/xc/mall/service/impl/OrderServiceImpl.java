@@ -1,5 +1,6 @@
 package com.xc.mall.service.impl;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xc.mall.feign.ItemFeignClient;
 import com.xc.mall.feign.UserFeignClient;
 import com.xc.mall.pojo.Item;

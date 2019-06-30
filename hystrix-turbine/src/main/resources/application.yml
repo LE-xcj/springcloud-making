@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name: mall-turbine-server
+server:
+  port: 20000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+turbine:
+  app-config: mall-order,mall-user,mall-item    # \u9700\u8981\u76D1\u63A7\u7684\u670D\u52A1\u540D\uFF0C\u591A\u4E2A\u5C31\u7528
+  aggregator:
+    cluster-config: default
+  clusterNameExpression: new String("default") #\u9ED8\u8BA4\u4E3A\u670D\u52A1\u540D\u7684\u96C6\u7FA4,\u6B64\u65F6\u7528\u9ED8\u8BA4\u5373\u53EF
+  instanceUrlSuffix: /hystrix.stream    # \u524D\u7F00\u8DEF\u5F84
+  combine-host-port: true

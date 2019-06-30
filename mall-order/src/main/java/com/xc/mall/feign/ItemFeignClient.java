@@ -1,5 +1,6 @@
 package com.xc.mall.feign;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xc.mall.pojo.Item;
 import com.xc.mall.pojo.dto.ItemConditionDTO;
 import org.springframework.cloud.openfeign.FeignClient;
